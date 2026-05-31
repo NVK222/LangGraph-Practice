@@ -1,7 +1,9 @@
 # Repo for Learning LangGraph  
 ### Project - 1  
-Just a basic code from LangGraph quickstart, teaching about tools, nodes, etc.  
+Just basic code from LangGraph quickstart, teaching about tools, nodes, etc.  
 ### Project - 2  
-A small and basic project for learning conditional routing.  
+A small and basic tool for customer support for learning conditional routing and loops.  
 ### Project - 3
-A small project for learning about structured outputs with loops
+A small tool for writing essays for learning about structured outputs and loops
+### Project - 4
+A basic itinerary planner for learning HITL, interrupts.
