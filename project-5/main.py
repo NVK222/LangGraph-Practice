@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import os
 from dotenv import load_dotenv
-from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.messages import HumanMessage, RemoveMessage, SystemMessage
 from langchain_core.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.checkpoint.memory import InMemorySaver
@@ -57,9 +57,9 @@ def summarizer(state: State):
     ctx = f"The summary is:  {messages}"
 
     response = model.invoke(([SystemMessage(content=summarizer_prompt)] + [ctx]))
-    del messages[:10]
+    delete = [RemoveMessage(msg.id) for msg in messages]
 
-    return {"summary": response.text}
+    return {"summary": response.text, "messages": delete}
 
 
 def save(state: dict[str], store: BaseStore):
@@ -80,10 +80,7 @@ def save(state: dict[str], store: BaseStore):
 
 
 def should_continue(state: State):
-    messages = state.get("messages", ["", ""])
-    last_message = messages[-2].text
-    if "DONE" in last_message.strip().upper():
-        return "saver"
+    messages = state.get("messages", [""])
 
     if len(messages) >= 10:
         return "summarizer"
