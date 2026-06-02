@@ -9,4 +9,6 @@ A small tool for writing essays for learning about structured outputs and loops
 A basic itinerary planner for learning HITL, interrupts.  
 ### Project - 5
 A fitness expert chat bot utilizing Postgres Store to learn about long term memory and context. 
-> Can be improved in the future to store information about multiple users.
+> Can be improved in the future to store information about multiple users.  
+### Project - 6
+A small PDF summarizer using google's file upload, map and reduce, and multiple agents.
